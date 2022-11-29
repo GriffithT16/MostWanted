@@ -198,10 +198,28 @@ function findPersonFamily(person, people){
         if(el.id === spouseId){
             return true
         }
+        
 
     })
+    // let parentsId = person.parents
+    // let parentsName;
+    // parentsName = people.filter(function(el){
+    //     if (el.id === parentsId){
+    //         return true;
+    //     }
+    // })
+    let personFamily
 
-    let personFamily = `Spouse: ${spouseName[0].firstName + " " + spouseName[0].lastName}\n`;
-    personFamily += `Parents: ${person.parents}\n`;
-    alert(personFamily);
-}
+    if (spouseId === null){
+        personFamily = `Spouse: Single\n`;
+    }
+    else{
+        personFamily = `Spouse: ${spouseName[0].firstName + " " + spouseName[0].lastName}\n`;
+
+    }
+        
+        personFamily += `Parents: ${person.parents}\n`;
+        alert(personFamily);
+    }
+    
+   
