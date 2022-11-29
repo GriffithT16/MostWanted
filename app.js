@@ -121,7 +121,17 @@ function searchByName(people) {
  * to the user in the form of an alert().
  * @param {Array} people        A collection of person objects.
  */
-function displayPeople(people) {
+function displayPeopleParents(people) {
+    alert(
+        people
+            .map(function (person) {
+                return ` Parent: ${person.firstName} ${person.lastName}`;
+            })
+            .join("\n")
+    );
+}
+
+function displayPeople2(people) {
     alert(
         people
             .map(function (person) {
@@ -201,14 +211,18 @@ function findPersonFamily(person, people){
         
 
     })
-    // let parentsId = person.parents
-    // let parentsName;
-    // parentsName = people.filter(function(el){
-    //     if (el.id === parentsId){
-    //         return true;
-    //     }
-    // })
-    let personFamily
+
+
+    let parentsId = person.parents
+    let parentsName;
+    parentsName = people.filter(function(el){
+        if (parentsId.includes(el.id)){
+            return true;
+        }
+    })
+
+
+    let personFamily;
 
     if (spouseId === null){
         personFamily = `Spouse: Single\n`;
@@ -217,8 +231,10 @@ function findPersonFamily(person, people){
         personFamily = `Spouse: ${spouseName[0].firstName + " " + spouseName[0].lastName}\n`;
 
     }
-        
-        personFamily += `Parents: ${person.parents}\n`;
+    
+    displayPeopleParents(parentsName)
+       
+ 
         alert(personFamily);
     }
     
