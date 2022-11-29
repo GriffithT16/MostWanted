@@ -21,7 +21,7 @@ function app(people) {
     let searchType = promptFor(
         "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",
         yesNo
-    ).toLowerCase();
+).toLowerCase();
     let searchResults;
     // Routes our application based on the user's input
     switch (searchType) {
@@ -191,5 +191,17 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
-function findPersonFamily(person) {
-    let personFamily = 
+function findPersonFamily(person, people){
+    let spouseId = person.currentSpouse
+    let spouseName;
+    spouseName = people.filter(function(el){
+        if(el.id === spouseId){
+            return true
+        }
+
+    })
+
+    let personFamily = `Spouse: ${spouseName[0].firstName + " " + spouseName[0].lastName}\n`;
+    personFamily += `Parents: ${person.parents}\n`;
+    alert(personFamily);
+}
