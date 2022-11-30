@@ -346,4 +346,12 @@ function searchByHeight(people){
     })
     displayPerson(Height[0])
 }
-
+function searchByWeight(people){
+    let userInput = parseInt(prompt('Enter Weight : lbs ex.(199)'))
+    let Weight;
+    Weight = people.filter(function(el){
+        if (el.weight === userInput)
+        return true;
+    })
+    displayPerson(Weight[0])
+}
