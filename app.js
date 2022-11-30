@@ -264,3 +264,35 @@ function findPersonDescendants(person, people){
     displayDescendants(descendants)
     // alert(personDescendants)
 }   
+
+function searchByTraits(people){
+    let searchType = promptFor("Please type in search critera without spaces then value.\nSeparate multiple criteria by a semicolon(no spaces around semicolon).\nCan also select 'restart' or quit.'\n(example one criteria - eyecolor brown)\n(example multiple critera - eyecolor brown;gender female", chars)
+    let searchResults;
+    switch (searchType) {
+        case "gender":
+            searchResults = searchByGender(people);
+            break;
+        case "DOB":
+            searchResults = searchByDOB(people);
+            break;
+        case "height":
+            searchResults = searchByHeight(people);
+        case "weight":
+            searchResults = searchByWeight(people);
+        case "eyeColor":
+            searchResults = searchByEyeColor(people);
+        case "occupation":
+            searchResults = searchByOccupation(people);
+        case "restart":
+            app(people);
+            break;
+        case "quit":
+            return;
+
+        default:
+            // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
+            app(people);
+            break;
+    }
+
+}
