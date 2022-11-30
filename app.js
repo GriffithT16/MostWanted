@@ -328,3 +328,13 @@ function searchByGender(people){
         displayPeople(females)
     }
 }
+function searchByDOB(people){
+    let userInput = prompt('Enter DOB : m/d/yyyy')
+    let DOB;
+    DOB = people.filter(function(el){
+        if (el.dob === userInput)
+        return true;
+    })
+    displayPerson(DOB[0])
+}
+
