@@ -121,6 +121,18 @@ function searchByName(people) {
  * to the user in the form of an alert().
  * @param {Array} people        A collection of person objects.
  */
+
+ function displayPeople(people) {
+    alert(
+        people
+            .map(function (person) {
+                return `${person.firstName} ${person.lastName}`;
+            })
+            .join("\n")
+    );
+}
+
+
 function displayPeopleParents(people) {
     alert(
         people
@@ -295,4 +307,24 @@ function searchByTraits(people){
             break;
     }
 
+}
+
+function searchByGender(people){
+    let userInput = prompt("enter male or female")
+    let males;
+    let females;
+    if (userInput == "male"){
+        males = people.filter(function(el){
+            if (el.gender === "male")
+            return true
+        })
+        displayPeople(males)
+    }
+    else if(userInput =="female"){
+        females = people.filter(function(el){
+            if (el.gender === "female")
+            return true
+        })
+        displayPeople(females)
+    }
 }
