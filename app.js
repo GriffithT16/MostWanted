@@ -364,3 +364,12 @@ function searchByEyeColor(people){
     })
     displayPeople(eyeColor)
 }
+function searchByOccupation(people){
+    let userInput = prompt('Enter Occupation')
+    let Occupation;
+    Occupation = people.filter(function(el){
+        if (el.occupation === userInput)
+        return true;
+    })
+    displayPeople(Occupation)
+}
