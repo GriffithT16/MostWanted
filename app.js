@@ -278,7 +278,7 @@ function findPersonDescendants(person, people){
 }   
 
 function searchByTraits(people){
-    let searchType = promptFor("Please type in search critera without spaces then value.\nSeparate multiple criteria by a semicolon(no spaces around semicolon).\nCan also select 'restart' or quit.'\n(example one criteria - eyecolor brown)\n(example multiple critera - eyecolor brown;gender female", chars)
+    let searchType = promptFor('Please Enter one of the following options:\ngender\nDOB\nheight\nweight\neyecolor\noccupation\nYou can also enter either (quit) or (restart).', chars)
     let searchResults;
     switch (searchType) {
         case "gender":
@@ -291,7 +291,7 @@ function searchByTraits(people){
             searchResults = searchByHeight(people);
         case "weight":
             searchResults = searchByWeight(people);
-        case "eyeColor":
+        case "eyecolor":
             searchResults = searchByEyeColor(people);
         case "occupation":
             searchResults = searchByOccupation(people);
@@ -354,4 +354,13 @@ function searchByWeight(people){
         return true;
     })
     displayPerson(Weight[0])
+}
+function searchByEyeColor(people){
+    let userInput = prompt('Enter Eye Color')
+    let eyeColor;
+    eyeColor = people.filter(function(el){
+        if (el.eyeColor === userInput)
+        return true;
+    })
+    displayPeople(eyeColor)
 }
