@@ -337,4 +337,13 @@ function searchByDOB(people){
     })
     displayPerson(DOB[0])
 }
+function searchByHeight(people){
+    let userInput = parseInt(prompt('Enter Height : inches ex.(65)'))
+    let Height;
+    Height = people.filter(function(el){
+        if (el.height === userInput)
+        return true;
+    })
+    displayPerson(Height[0])
+}
 
