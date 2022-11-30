@@ -293,11 +293,7 @@ const data = [
 		"parents": [313207561, 313997561],
 		"currentSpouse": null
 	},
-	{
-		"id": 1234,
-		"firstName": "Not",
-		"lastName": "Married",
-	}
+
 ];
 
 

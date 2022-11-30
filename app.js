@@ -131,11 +131,11 @@ function displayPeopleParents(people) {
     );
 }
 
-function displayPeople2(people) {
+function displayDescendants(people) {
     alert(
         people
             .map(function (person) {
-                return `${person.firstName} ${person.lastName}`;
+                return `Descendant: ${person.firstName} ${person.lastName}`;
             })
             .join("\n")
     );
@@ -231,11 +231,36 @@ function findPersonFamily(person, people){
         personFamily = `Spouse: ${spouseName[0].firstName + " " + spouseName[0].lastName}\n`;
 
     }
+    if (parentsId == []){
+        personFamily += 'No Parents on Record'
+    }
+    else{
+        displayPeopleParents(parentsName)
+    }
+
     
-    displayPeopleParents(parentsName)
+    
        
  
         alert(personFamily);
     }
     
-   
+function findPersonDescendants(person, people){
+       
+    let parent = person.id
+    let descendants
+    descendants = people.filter(function(el){
+        if (el.parents.includes(parent)){
+            return true;
+        }
+    })
+    // // let personDescendants
+    // // if (descendants = []){
+    // //     personDescendants = "No Children"
+    // // }
+    // // else{
+    //     displayDescendants(descendants);
+    // }
+    displayDescendants(descendants)
+    // alert(personDescendants)
+}   
