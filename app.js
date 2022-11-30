@@ -278,35 +278,76 @@ function findPersonDescendants(person, people){
 }   
 
 function searchByTraits(people){
-    let searchType = promptFor('Please Enter one of the following options:\ngender\nDOB\nheight\nweight\neyecolor\noccupation\nYou can also enter either (quit) or (restart).', chars)
-    let searchResults;
-    switch (searchType) {
-        case "gender":
-            searchResults = searchByGender(people);
-            break;
-        case "DOB":
-            searchResults = searchByDOB(people);
-            break;
-        case "height":
-            searchResults = searchByHeight(people);
-        case "weight":
-            searchResults = searchByWeight(people);
-        case "eyecolor":
-            searchResults = searchByEyeColor(people);
-        case "occupation":
-            searchResults = searchByOccupation(people);
-        case "restart":
-            app(people);
-            break;
-        case "quit":
-            return;
+    let searchResults = people;
+    let questionAnswered = true
+    while (questionAnswered == true){
 
-        default:
-            // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
-            app(people);
-            break;
+        let searchType = promptFor('Please Enter one of the following options:\ngender\nDOB\nheight\nweight\neyecolor\noccupation\nYou can also enter either (quit) or (restart).', chars)
+        switch (searchType) {
+            case "gender":
+                searchResults = searchByGender(searchResults);
+                let userInput = prompt("Would you like to search by more criteria?")
+                if (userInput = "yes"){
+                    break
+                }
+                else if(userInput = "no"){
+                    questionAnswered = true
+                }
+            case "DOB":
+                searchResults = searchByDOB(searchResults);
+                userInput = prompt("Would you like to search by more criteria?")
+                if (userInput = "yes"){
+                    break
+                }
+                else if(userInput = "no"){
+                    questionAnswered = true
+                }
+            case "height":
+                searchResults = searchByHeight(searchResults);
+                userInput = prompt("Would you like to search by more criteria?")
+                if (userInput = "yes"){
+                    break
+                }
+                else if(userInput = "no"){
+                    questionAnswered = true
+                }
+            case "weight":
+                searchResults = searchByWeight(searchResults);
+                userInput = prompt("Would you like to search by more criteria?")
+                if (userInput = "yes"){
+                    break
+                }
+                else if(userInput = "no"){
+                    questionAnswered = true
+                }
+            case "eyecolor":
+                searchResults = searchByEyeColor(searchResults);
+                userInput = prompt("Would you like to search by more criteria?")
+                if (userInput = "yes"){
+                    break
+                }
+                else if(userInput = "no"){
+                    questionAnswered = true
+                }
+            case "occupation":
+                searchResults = searchByOccupation(searchResults);
+                userInput = prompt("Would you like to search by more criteria?")
+                if (userInput = "yes"){
+                    break
+                }
+                else if(userInput = "no"){
+                    questionAnswered = true
+                }
+            case "restart":
+                app(searchResults);
+                break;
+            case "quit":
+                return;
+            default:
+                app(people);
+                break;
+        }
     }
-
 }
 
 function searchByGender(people){
@@ -319,6 +360,8 @@ function searchByGender(people){
             return true
         })
         displayPeople(males)
+        return males
+
     }
     else if(userInput =="female"){
         females = people.filter(function(el){
@@ -326,6 +369,7 @@ function searchByGender(people){
             return true
         })
         displayPeople(females)
+        return females
     }
 }
 function searchByDOB(people){
@@ -335,7 +379,8 @@ function searchByDOB(people){
         if (el.dob === userInput)
         return true;
     })
-    displayPerson(DOB[0])
+    displayPeople(DOB)
+    return DOB
 }
 function searchByHeight(people){
     let userInput = parseInt(prompt('Enter Height : inches ex.(65)'))
@@ -344,7 +389,8 @@ function searchByHeight(people){
         if (el.height === userInput)
         return true;
     })
-    displayPerson(Height[0])
+    displayPeople(Height)
+    return Height
 }
 function searchByWeight(people){
     let userInput = parseInt(prompt('Enter Weight : lbs ex.(199)'))
@@ -353,7 +399,8 @@ function searchByWeight(people){
         if (el.weight === userInput)
         return true;
     })
-    displayPerson(Weight[0])
+    displayPeople(Weight)
+    return Weight
 }
 function searchByEyeColor(people){
     let userInput = prompt('Enter Eye Color')
@@ -363,6 +410,7 @@ function searchByEyeColor(people){
         return true;
     })
     displayPeople(eyeColor)
+    return eyeColor
 }
 function searchByOccupation(people){
     let userInput = prompt('Enter Occupation')
@@ -372,4 +420,7 @@ function searchByOccupation(people){
         return true;
     })
     displayPeople(Occupation)
+    return Occupation
 }
+
+
