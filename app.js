@@ -149,6 +149,16 @@ function displayDescendants(people) {
             .join("\n")
     );
 }
+
+function displaySiblings(people) {
+    alert(
+        people
+            .map(function (person) {
+                return `Sibling: ${person.firstName} ${person.lastName}`;
+            })
+            .join("\n")
+    );
+}
 // End of displayPeople()
 
 /**
@@ -234,24 +244,35 @@ function findPersonFamily(person, people){
     let personFamily;
 
     if (spouseId === null){
-        personFamily = `Spouse: Single\n`;
+        personFamily = `Spouse: None\n`;
     }
     else{
         personFamily = `Spouse: ${spouseName[0].firstName + " " + spouseName[0].lastName}\n`;
 
     }
     if (parentsId.length === 0){
-        personFamily += 'No Parents on Record'
+        personFamily += 'Parent: None\n';
     }
     else{
         displayPeopleParents(parentsName)
     }
-
-    
-    
-       
- 
-        alert(personFamily);
+    let siblings;
+    let personParents = person.parents
+    siblings = people.filter(function(el){
+        if (el.id === person.id){
+            return false;
+        }
+        else if (el.parents.includes(personParents[0] || personParents[1])){
+            return true;
+        }
+    })
+    if (personParents.length === 0){
+        personFamily += `Sibling: None\n`;
+    }
+    else{
+        displaySiblings(siblings)
+    }  
+    alert(personFamily);    
     }
     
 function findPersonDescendants(person, people){
@@ -501,4 +522,13 @@ function searchByOccupation(people){
     }
 }
 
-
+function findSiblings(person, people){
+    let siblings;
+    let personParents = person.parents
+    siblings = people.filter(function(el){
+        if (el.parents.includes(personParents)){
+            return true;
+        }
+    })
+    alert(displayPeople(siblings))
+}
