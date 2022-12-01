@@ -293,6 +293,9 @@ function searchByTraits(people){
                 else if(userInput === "no"){
                     questionAnswered = true
                     return;
+                }else{
+                    alert ('Invalid Input, returning to filter options.')
+                    break;
                 }
             case "DOB":
                 searchResults = searchByDOB(searchResults);
@@ -303,6 +306,9 @@ function searchByTraits(people){
                 else if(userInput1 === "no"){
                     questionAnswered = true
                     return;
+                }else{
+                    alert ('Invalid Input, returning to filter options.')
+                    break;
                 }
             case "height":
                 searchResults = searchByHeight(searchResults);
@@ -313,6 +319,9 @@ function searchByTraits(people){
                 else if(userInput2 === "no"){
                     questionAnswered = false
                     return;
+                }else{
+                    alert ('Invalid Input, returning to filter options.')
+                    break;
                 }
             case "weight":
                 searchResults = searchByWeight(searchResults);
@@ -323,6 +332,9 @@ function searchByTraits(people){
                 else if(userInput3 === "no"){
                     questionAnswered = true
                     return;
+                }else{
+                    alert ('Invalid Input, returning to filter options.')
+                    break;
                 }
             case "eyecolor":
                 searchResults = searchByEyeColor(searchResults);
@@ -333,6 +345,9 @@ function searchByTraits(people){
                 else if(userInput4 === "no"){
                     questionAnswered = true
                     return;
+                }else{
+                    alert ('Invalid Input, returning to filter options.')
+                    break;
                 }
             case "occupation":
                 searchResults = searchByOccupation(searchResults);
@@ -343,6 +358,9 @@ function searchByTraits(people){
                 else if(userInput5 === "no"){
                     questionAnswered = true
                     return;
+                }else{
+                    alert ('Invalid Input, returning to filter options.')
+                    break;
                 }
             case "restart":
                 app(searchResults);
@@ -389,7 +407,16 @@ function searchByDOB(people){
     return DOB
 }
 function searchByHeight(people){
-    let userInput = parseInt(prompt('Enter Height : inches ex.(65)'))
+    let heightInput = true
+    let userInput;
+    while (heightInput == true){
+        userInput = parseInt(prompt('Enter Height : inches ex.(65)'))
+        if (isNaN(userInput)){
+            alert ('Please enter a number.')
+        }else{
+            heightInput = false
+            break;
+        }}
     let Height;
     Height = people.filter(function(el){
         if (el.height === userInput)
@@ -399,7 +426,17 @@ function searchByHeight(people){
     return Height
 }
 function searchByWeight(people){
-    let userInput = parseInt(prompt('Enter Weight : lbs ex.(199)'))
+    let weightInput = true
+    let userInput;
+    while (weightInput == true){
+        userInput = parseInt(prompt('Enter Weight : lbs ex.(199)'))
+        if (isNaN(userInput)){
+            alert ('Please enter a number.')
+        }else{
+            weightInput = false
+            break;
+        }
+    }    
     let Weight;
     Weight = people.filter(function(el){
         if (el.weight === userInput)
