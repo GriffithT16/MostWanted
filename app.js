@@ -287,56 +287,62 @@ function searchByTraits(people){
             case "gender":
                 searchResults = searchByGender(searchResults);
                 let userInput = prompt("Would you like to search by more criteria?")
-                if (userInput = "yes"){
+                if (userInput === "yes"){
                     break
                 }
-                else if(userInput = "no"){
+                else if(userInput === "no"){
                     questionAnswered = true
+                    return;
                 }
             case "DOB":
                 searchResults = searchByDOB(searchResults);
-                userInput = prompt("Would you like to search by more criteria?")
-                if (userInput = "yes"){
+                let userInput1 = prompt("Would you like to search by more criteria?")
+                if (userInput1 === "yes"){
                     break
                 }
-                else if(userInput = "no"){
+                else if(userInput1 === "no"){
                     questionAnswered = true
+                    return;
                 }
             case "height":
                 searchResults = searchByHeight(searchResults);
-                userInput = prompt("Would you like to search by more criteria?")
-                if (userInput = "yes"){
+                let userInput2 = prompt("Would you like to search by more criteria?")
+                if (userInput2 === "yes"){
                     break
                 }
-                else if(userInput = "no"){
-                    questionAnswered = true
+                else if(userInput2 === "no"){
+                    questionAnswered = false
+                    return;
                 }
             case "weight":
                 searchResults = searchByWeight(searchResults);
-                userInput = prompt("Would you like to search by more criteria?")
-                if (userInput = "yes"){
+                let userInput3 = prompt("Would you like to search by more criteria?")
+                if (userInput3 === "yes"){
                     break
                 }
-                else if(userInput = "no"){
+                else if(userInput3 === "no"){
                     questionAnswered = true
+                    return;
                 }
             case "eyecolor":
                 searchResults = searchByEyeColor(searchResults);
-                userInput = prompt("Would you like to search by more criteria?")
-                if (userInput = "yes"){
+                let userInput4 = prompt("Would you like to search by more criteria?")
+                if (userInput4 === "yes"){
                     break
                 }
-                else if(userInput = "no"){
+                else if(userInput4 === "no"){
                     questionAnswered = true
+                    return;
                 }
             case "occupation":
                 searchResults = searchByOccupation(searchResults);
-                userInput = prompt("Would you like to search by more criteria?")
-                if (userInput = "yes"){
+                let userInput5 = prompt("Would you like to search by more criteria?")
+                if (userInput5 === "yes"){
                     break
                 }
-                else if(userInput = "no"){
+                else if(userInput5 === "no"){
                     questionAnswered = true
+                    return;
                 }
             case "restart":
                 app(searchResults);
