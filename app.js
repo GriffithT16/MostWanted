@@ -375,37 +375,55 @@ function searchByTraits(people){
 }
 
 function searchByGender(people){
-    let userInput = prompt("enter male or female")
+    let userInput;
     let males;
     let females;
-    if (userInput == "male"){
-        males = people.filter(function(el){
-            if (el.gender === "male")
-            return true
-        })
-        displayPeople(males)
-        return males
+    let genderInput = true;
+    while (genderInput == true){
+        userInput = prompt("enter male or female")
+        if (userInput == "male"){
+            males = people.filter(function(el){
+                if (el.gender === "male")
+                return true
+            })
+            displayPeople(males)
+            return males
+    
+        }
+        else if(userInput =="female"){
+            females = people.filter(function(el){
+                if (el.gender === "female")
+                return true
+            })
+            displayPeople(females)
+            return females
+        }
+        else{
+            alert("Please enter male or female")
+        }
+    }
+}
 
-    }
-    else if(userInput =="female"){
-        females = people.filter(function(el){
-            if (el.gender === "female")
-            return true
-        })
-        displayPeople(females)
-        return females
-    }
-}
 function searchByDOB(people){
-    let userInput = prompt('Enter DOB : m/d/yyyy')
-    let DOB;
-    DOB = people.filter(function(el){
-        if (el.dob === userInput)
-        return true;
-    })
-    displayPeople(DOB)
-    return DOB
+    let DOBInput = true
+    let userInput;
+    while (DOBInput == true){
+        userInput = prompt('Enter DOB : m/d/yyyy')
+        let DOB;
+        DOB = people.filter(function(el){
+            if (el.dob === userInput)
+            return true;
+        })
+        if (DOB.length === 0){
+            alert("No DOB matches in the database")
+        }
+        else{
+            displayPeople(DOB)
+            return DOB
+        }    
+    }
 }
+
 function searchByHeight(people){
     let heightInput = true
     let userInput;
@@ -425,6 +443,7 @@ function searchByHeight(people){
     displayPeople(Height)
     return Height
 }
+
 function searchByWeight(people){
     let weightInput = true
     let userInput;
@@ -445,25 +464,45 @@ function searchByWeight(people){
     displayPeople(Weight)
     return Weight
 }
+
 function searchByEyeColor(people){
-    let userInput = prompt('Enter Eye Color')
-    let eyeColor;
-    eyeColor = people.filter(function(el){
-        if (el.eyeColor === userInput)
-        return true;
-    })
-    displayPeople(eyeColor)
-    return eyeColor
+    let eyeColorInput = true
+    let userInput;
+    while (eyeColorInput == true){
+        userInput = prompt('Enter Eye Color')
+        let eyeColor;
+        eyeColor = people.filter(function(el){
+            if (el.eyeColor === userInput)
+            return true;
+        })
+        if (eyeColor.length === 0){
+            alert("No eye color matches in the database")
+        }
+        else{
+            displayPeople(eyeColor)
+            return eyeColor
+        }
+    }
 }
+
 function searchByOccupation(people){
-    let userInput = prompt('Enter Occupation')
-    let Occupation;
-    Occupation = people.filter(function(el){
-        if (el.occupation === userInput)
-        return true;
-    })
-    displayPeople(Occupation)
-    return Occupation
+    let occupationInput = true
+    let userInput;
+    while (occupationInput == true){
+        userInput = prompt('Enter Occupation')
+        let Occupation;
+        Occupation = people.filter(function(el){
+            if (el.occupation === userInput)
+            return true;
+        })
+        if (Occupation.length === 0){
+            alert("No occupation matches in database")
+        }
+        else{
+            displayPeople(Occupation)
+            return Occupation
+        }
+    }
 }
 
 
