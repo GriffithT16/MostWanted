@@ -67,19 +67,16 @@ function mainMenu(person, people) {
             //! TODO #1: Utilize the displayPerson function //////////////////////////////////////////
             // HINT: Look for a person-object stringifier utility function to help
             let personInfo = displayPerson(person[0]);
-            alert(personInfo);
             break;
         case "family":
             //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
             // HINT: Look for a people-collection stringifier utility function to help
             let personFamily = findPersonFamily(person[0], people);
-            alert(personFamily);
             break;
         case "descendants":
             //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
             // HINT: Review recursion lecture + demo for bonus user story
             let personDescendants = findPersonDescendants(person[0], people);
-            alert(personDescendants);
             break;
         case "restart":
             // Restart app() from the very beginning
@@ -243,7 +240,7 @@ function findPersonFamily(person, people){
         personFamily = `Spouse: ${spouseName[0].firstName + " " + spouseName[0].lastName}\n`;
 
     }
-    if (parentsId == []){
+    if (parentsId.length === 0){
         personFamily += 'No Parents on Record'
     }
     else{
@@ -266,15 +263,14 @@ function findPersonDescendants(person, people){
             return true;
         }
     })
-    // // let personDescendants
-    // // if (descendants = []){
-    // //     personDescendants = "No Children"
-    // // }
-    // // else{
-    //     displayDescendants(descendants);
-    // }
-    displayDescendants(descendants)
-    // alert(personDescendants)
+    let personDescendants
+    if (descendants.length === 0){
+        personDescendants = "No Children"
+    }
+    else{
+        displayDescendants(descendants);
+    }
+    alert(personDescendants)
 }   
 
 function searchByTraits(people){
